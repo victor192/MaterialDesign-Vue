@@ -1,29 +1,14 @@
 import { getIcon } from "../library"
 
-function normalizeIconArgs(icon) {
-  if (icon === null) {
-    return null
-  }
-
-  if (typeof icon === "object" && icon.prefix && icon.name) {
-    return icon
-  }
-
-  if (Array.isArray(icon) && icon.length === 2) {
-    return { prefix: icon[0], name: icon[1] }
-  }
-
-  if (typeof icon === "string") {
-    return { prefix: "mdi", name: icon }
-  }
-}
+const removeMdiPrefix = (str) => str.replace("mdi-", "")
 
 export default {
   name: "VueMdi",
   functional: true,
   props: {
     icon: {
-      type: [Object, Array, String],
+      type: String,
+      required: true,
     },
     title: {
       type: [Object, String],
@@ -54,25 +39,20 @@ export default {
       default: 0,
     },
     spin: {
-      type: Boolean,
+      type: [Boolean, Number],
       default: false,
     },
   },
   render(createElement, { props }) {
-    const iconProp = normalizeIconArgs(props.icon)
-
-    if (!iconProp) {
-      throw new Error("Invalid icon property value")
-    }
-
-    const icon = getIcon(iconProp)
+    const iconName = removeMdiPrefix(props.icon)
+    const icon = getIcon(iconName)
 
     if (icon) {
       const pathStyle = {}
       const transform = []
       const style = {}
 
-      if (props.size !== null) {
+      if (props.size) {
         style.width = `${props.size * 1.5}rem`
         style.height = style.width
       }
@@ -106,8 +86,7 @@ export default {
       }
 
       let spinElement = pathElement
-      const spinSec =
-        !!props.spin || typeof props.spin !== "number" ? 2 : props.spin
+      const spinSec = typeof props.spin !== "number" ? 2 : props.spin
       let inverse = props.horizontal || props.vertical
 
       if (spinSec < 0) {
@@ -118,7 +97,7 @@ export default {
         spinElement = createElement(
           "g",
           {
-            attrs: {
+            style: {
               animation: `spin${inverse ? "-inverse" : ""} linear ${Math.abs(
                 spinSec
               )}s infinite`,
@@ -170,26 +149,30 @@ export default {
         },
         [
           ...(props.title
-            ? createElement(
-                "title",
-                {
-                  attrs: {
-                    id: labelledById,
+            ? [
+                createElement(
+                  "title",
+                  {
+                    attrs: {
+                      id: labelledById,
+                    },
                   },
-                },
-                props.title
-              )
+                  props.title
+                ),
+              ]
             : []),
           ...(props.description
-            ? createElement(
-                "desc",
-                {
-                  attrs: {
-                    id: describedById,
+            ? [
+                createElement(
+                  "desc",
+                  {
+                    attrs: {
+                      id: describedById,
+                    },
                   },
-                },
-                props.description
-              )
+                  props.description
+                ),
+              ]
             : []),
           spinElement,
         ]
