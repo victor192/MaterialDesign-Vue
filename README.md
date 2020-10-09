@@ -2,7 +2,9 @@
 
 VueJS Component for Material Design Icons
 
-[Patreon](https://www.patreon.com/cryptomath)
+<a href="https://www.npmjs.com/package/mdi-icon"><img src="https://img.shields.io/npm/v/mdi-icon.svg?logo=npm" /></a>
+<a href="https://www.npmjs.com/package/mdi-icon"><img src="https://img.shields.io/npm/dt/mdi-icon.svg" /></a>
+<a href="https://www.patreon.com/cryptomath"><img src="https://img.shields.io/badge/dynamic/json?color=%23e85b46&label=Patreon&query=data.attributes.patron_count&suffix=%20patrons&url=https%3A%2F%2Fwww.patreon.com%2Fapi%2Fcampaigns%2F5341611" /></a>
 
 ## Installation
 
