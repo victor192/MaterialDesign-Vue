@@ -1,6 +1,6 @@
 # MaterialDesign-Vue
 
-VueJS/VueTS Component for Material Design Icons
+VueJS Component for Material Design Icons
 
 [Patreon](https://www.patreon.com/cryptomath)
 
@@ -10,13 +10,13 @@ Install the icon content [@mdi/js](https://github.com/Templarian/MaterialDesign-
 
 ```
 npm install --save @mdi/js
-npm install --save @mdi/vue
+npm install --save mdi-icon
 ```
 
 And import VueMdi `css` file in your app entry point
 
 ```
-import '@mdi/vue/dist/mdi.css';
+import 'mdi-icon/dist/mdi.css';
 ```
 
 ### Add more icons packs
@@ -38,9 +38,9 @@ The following examples are based on a project configured with [vue-cli](https://
 ```javascript
 import Vue from 'vue'
 import App from './App'
-import { VueMdi, library } from '@mdi/vue'
+import { VueMdi, library } from 'mdi-icon'
 import { mdiAccount } from '@mdi/js'
-import '@mdi/vue/dist/mdi.css';
+import 'mdi-icon/dist/mdi.css';
 
 library.add({ mdiAccount })
 
@@ -75,7 +75,7 @@ export default {
 #### Using default icons
 
 ```javascript
-import { library } from '@mdi/vue'
+import { library } from 'mdi-icon'
 import { mdiAccount } from '@mdi/js'
 
 library.add({ mdiAccount })
@@ -92,7 +92,7 @@ library.add({ mdiAccount })
 #### Using Light icons
 
 ```javascript
-import { library } from '@mdi/vue'
+import { library } from 'mdi-icon'
 import { mdilAccount } from '@mdi/light-js'
 
 library.add({ mdilAccount })
@@ -119,7 +119,7 @@ The `icon` property of the `VueMdi` component can be used in the following way:
 For the above to work you must add the `android` and `facebook` icon to the library.
 
 ```javascript
-import { library } from '@mdi/vue'
+import { library } from 'mdi-icon'
 import { mdiAndroid, mdiFacebook } from '@mdi/js'
 
 library.add({ mdiAndroid, mdiFacebook })
@@ -141,7 +141,7 @@ you would need to pass in the icon name using _kebab-case_ as opposed to _camelC
 For the above to work you must add the `facebook` icon (MDI default pack) to the library.
 
 ```javascript
-import { library } from '@mdi/vue'
+import { library } from 'mdi-icon'
 import { mdiFacebook } from '@mdi/js'
 
 library.add({ mdiFacebook })
@@ -173,7 +173,7 @@ export default {
 For the above to work you must add the MDI Light `account` icon to the library.
 
 ```javascript
-import { library } from '@mdi/vue'
+import { library } from 'mdi-icon'
 import { mdilAccount } from '@mdi/light-js'
 
 library.add({ mdilAccount })
@@ -188,7 +188,7 @@ thousands of icons to just the small number that are normally used.
 #### Import the specific icons that you need
 
 ```javascript
-import { library } from '@mdi/vue'
+import { library } from 'mdi-icon'
 import { mdiAccount, mdiBlockHelper } from '@mdi/js'
 import { mdilAccount } from '@mdi/light-js'
 
@@ -198,7 +198,7 @@ library.add({ mdiAccount, mdiBlockHelper, mdilAccount })
 #### Reset all loaded icons
 
 ```javascript
-import { library } from '@mdi/vue'
+import { library } from 'mdi-icon'
 
 library.reset()
 ```

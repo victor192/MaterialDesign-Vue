@@ -1,6 +1,6 @@
 {
-  "name": "@mdi/vue",
-  "version": "1.0.0",
+  "name": "mdi-icon",
+  "version": "1.0.1",
   "description": "Vue Dist for Material Design Icons",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
